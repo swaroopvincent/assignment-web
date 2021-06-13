@@ -2,21 +2,25 @@ function validateForm() {
     // validate('fname')
     // validate('lname')
     // validatePhoneNumber()
-    console.log(validate('fname'))
+    // console.log(validate('fname'))
 
-    // if(validate('fname') && validate('lname') && validatePhoneNumber()) {
-    //     console.log("success")
-    // } else {
-    //     console.log('error')
-    // }
+    if(validate('fname') && validate('lname') && validatePhoneNumber()) {
+        var successDiv = document.getElementById('status-div')
+        var p = document.createElement('p')
+        p.innerHTML = "Successfully applied for the Job."
+        successDiv.appendChild(p)
+    } else {
+        console.log('error')
+    }
 
 }
 
 function validate(id){
-    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    var regName = /^[a-zA-Z]+$/;
     var name = document.getElementById(id).value;
     console.log(name)
     if(!regName.test(name)){
+        console.log('failed')
         document.getElementById(id).focus();
         return false;
     }else{
